@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Add Blog</title>
+  <%- include('./partials/styles.ejs') %>
+</head>
+<body>
+  <%- include('./partials/topbar.ejs') %>
+
+  <form id="addBlogForm" class="blog-form" method="POST" action="/createblog">
+    <h2>Add New Blog</h2>
+
+    <input id="blogTitle" type="text" name="title" placeholder="Enter Blog Title" required />
+    <textarea id="blogBody" name="body" placeholder="Enter Blog Body" rows="8" required></textarea>
+    <input id="addBlogBtn" type="submit" value="Add Blog" />
+
+    <% if (message) { %>
+      <p class="message"><%= message %></p>
+    <% } %>
+  </form>
+</body>
+</html>

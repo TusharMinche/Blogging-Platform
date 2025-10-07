@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Blogs</title>
+  <%- include('./partials/styles.ejs') %>
+</head>
+<body>
+  <%- include('./partials/topbar.ejs') %>
+
+  <a id="addBlogLink" href="/addblog" class="add-blog-link">+ Add Blog</a>
+
+  <div id="myBlogsContainer" class="blogs-container">
+    <% if (blogData.length > 0) { for(let i = 0; i < blogData.length; i++){ %>
+      <div class="blog-card">
+        <div class="blog-title"><%= blogData[i].title %></div>
+        <div class="blog-body"><%= blogData[i].body %></div>
+        <div class="blog-actions">
+          <a class="edit-button" href="/editblog?blogId=<%= blogData[i]._id %>">Edit</a>
+          <a class="delete-button" href="/deleteblog?blogId=<%= blogData[i]._id %>">Delete</a>
+        </div>
+      </div>
+    <% } } else { %>
+      <p class="message">You haven't created any blogs yet.</p>
+    <% } %>
+  </div>
+</body>
+</html>

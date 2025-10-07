@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Home</title>
+  <%- include('./partials/styles.ejs') %>
+</head>
+<body>
+  <%- include('./partials/topbar.ejs') %>
+
+  <div id="sortSection" class="sort-section">
+    <label for="sort">Sort by:</label>
+    <select id="sort" onchange="window.location.href='/?pages=1&sort='+this.value">
+      <option value="title" <% if(sort === "title") { %> selected <% } %>>Title</option>
+      <option value="createdAt" <% if(sort === "createdAt") { %> selected <% } %>>Date</option>
+    </select>
+  </div>
+
+  <div id="blogsContainer" class="blogs-container">
+    <% if (blogData.length > 0) { for(let i = 0; i < blogData.length; i++){ %>
+      <div class="blog-card">
+        <div class="blog-title"><%= blogData[i].title %></div>
+        <div class="blog-body"><%= blogData[i].body %></div>
+      </div>
+    <% } } else { %>
+      <p class="message">No blogs found.</p>
+    <% } %>
+  </div>
+
+  <div id="pagination" class="pagination">
+    <% for(let i = 1; i <= pages; i++){ %>
+      <a href="/?page=<%= i %>" <% if(i==current){ %> class="activePage" <% } %> ><%= i %></a>
+    <% } %>
+  </div>
+</body>
+</html>

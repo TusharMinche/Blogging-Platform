@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Signup</title>
+  <%- include('./partials/styles.ejs') %>
+</head>
+<body>
+  <%- include('./partials/topbar.ejs') %>
+
+  <form id="signupForm" class="auth-form" method="POST" action="http://localhost:3000/register">
+    <h2>Signup</h2>
+
+    <input id="signupName" type="text" name="name" placeholder="Enter your name" required />
+    <input id="signupEmail" type="email" name="email" placeholder="Enter your email" required />
+    <input id="signupPassword" type="password" name="password" placeholder="Enter your password" required />
+    <input id="signupBtn" type="submit" value="Signup" />
+
+    <% if (message) { %>
+      <p class="message"><%= message %></p>
+    <% } %>
+
+    <p style="text-align:center;">Already have an account? <a href="/login">Login</a></p>
+  </form>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login</title>
+  <%- include('./partials/styles.ejs') %>
+</head>
+<body>
+  <%- include('./partials/topbar.ejs') %>
+
+  <form id="loginForm" class="auth-form" method="POST" action="http://localhost:3000/login">
+    <h2>Login</h2>
+
+    <% if (message) { %>
+      <p class="message"><%= message %></p>
+    <% } %>
+
+    <input id="loginEmail" type="email" name="email" placeholder="Enter your email" required />
+    <input id="loginPassword" type="password" name="password" placeholder="Enter your password" required />
+    <input id="loginBtn" type="submit" value="Login" />
+
+    <p style="text-align:center;">Don't have an account? <a href="/signup">Sign up</a></p>
+  </form>
+</body>
+</html>
